@@ -5,6 +5,8 @@ const userRouter = require('./routes/users')
 const authRouter = require('./routes/auth')
 const fileUpload = require('express-fileupload');
 
+const port = process.env.PORT || 9000
+
 const app = express()
 app.use(fileUpload({
     limits: { fileSize: 50 * 1024 * 1024 },
@@ -18,6 +20,8 @@ app.use(helmet());
 app.use('/users',userRouter)
 app.use('/auth',authRouter)
 
-app.listen(9000, () => {
+app.listen(port, () => {
     console.log('Server Started...')
 })
+
+
